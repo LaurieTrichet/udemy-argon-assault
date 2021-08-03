@@ -154,7 +154,9 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 8419288530588959790, guid: 66e9fdb29b8f4e845954f2bb9feb9a48, type: 2}
+    value: {fileID: 906237939}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &208941216
@@ -1194,7 +1196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 906237937}
-  - component: {fileID: 906237938}
+  - component: {fileID: 906237939}
   m_Layer: 0
   m_Name: Player Rig
   m_TagString: Untagged
@@ -1209,7 +1211,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906237936}
-  m_LocalRotation: {x: -0, y: 0.79003614, z: -0, w: 0.61306036}
+  m_LocalRotation: {x: 0, y: 0.7900361, z: 0, w: 0.61306036}
   m_LocalPosition: {x: 122, y: 31.6, z: -114.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1217,24 +1219,26 @@ Transform:
   - {fileID: 1842466360}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 104.378, z: 0}
---- !u!320 &906237938
-PlayableDirector:
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &906237939
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906237936}
   m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 21aec4bd75c0b8a46be867dda2fbd357, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings: []
-  m_ExposedReferences:
-    m_References: []
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
