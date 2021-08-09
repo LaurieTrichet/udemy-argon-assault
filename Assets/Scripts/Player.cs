@@ -8,9 +8,12 @@ public class Player : MonoBehaviour
 
     public float HorizontalOffset = 1.0f;
     public float speed = 10.0f;
+    public float xRange = 3.0f;
+    public float yRange = 3.0f;
     private bool shouldMove;
     Vector2 direction;
     Vector3 localPos;
+    private Vector2 moveValue;
 
     // Start is called before the first frame update
     void Start()
@@ -23,19 +26,23 @@ public class Player : MonoBehaviour
     {
         if (shouldMove)
         {
+            localPos = transform.localPosition;
+            direction = new Vector2(xRange, yRange) * moveValue;
+            var x = localPos.x + direction.x;
+            var y = localPos.y + direction.y;
+            direction = new Vector2(Mathf.Clamp(x, -xRange, xRange), Mathf.Clamp(y, -yRange, yRange));
             transform.localPosition = Vector2.MoveTowards(transform.localPosition, direction, Time.deltaTime * speed);
         }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        var value = context.ReadValue<Vector2>();
-        Debug.Log(value + " , " + context.phase);
+        moveValue = context.ReadValue<Vector2>();
+        Debug.Log(moveValue + " , " + context.phase);
         if (context.performed)
         {
             shouldMove = true;
-            localPos = transform.localPosition;
-            direction =  new Vector2(localPos.x, localPos.y) + value * HorizontalOffset;
+   
         }
         if (context.canceled)
         {
