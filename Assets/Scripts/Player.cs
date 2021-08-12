@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     Vector3 localPos;
     private Vector2 moveValue;
 
+    public float positionPitchFactor = 6.0f;
+    public float positionYawFactor = 6.0f;
+    public float positionRollFactor = 6.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,20 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        ProcessMovement();
+        ProcessRotation();
+    }
+
+    private void ProcessRotation()
+    {
+        float pitch = transform.localPosition.y * positionPitchFactor;
+        float yaw = 0f;
+        float roll = 0f;
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    private void ProcessMovement()
     {
         if (shouldMove)
         {
