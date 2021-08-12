@@ -15,9 +15,10 @@ public class Player : MonoBehaviour
     Vector3 localPos;
     private Vector2 moveValue;
 
-    public float positionPitchFactor = 6.0f;
-    public float positionYawFactor = 6.0f;
-    public float positionRollFactor = 6.0f;
+    public float positionPitchFactor = -6.0f;
+    public float controlPitchFactor = -10.0f;
+    public float positionYawFactor = -10.0f;
+    public float controlRollFactor = -6.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +35,11 @@ public class Player : MonoBehaviour
 
     private void ProcessRotation()
     {
-        float pitch = transform.localPosition.y * positionPitchFactor;
-        float yaw = 0f;
-        float roll = 0f;
+        float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
+        float pitchDueToControl = moveValue.y * controlPitchFactor;
+        float pitch = pitchDueToPosition + pitchDueToControl;
+        float yaw = 180f + transform.localPosition.x * positionYawFactor;
+        float roll = controlRollFactor * moveValue.x;
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
 
