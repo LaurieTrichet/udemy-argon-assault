@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public float positionYawFactor = -10.0f;
     public float controlRollFactor = -6.0f;
 
+    public List<ParticleSystem> particleSystems = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,9 +75,21 @@ public class Player : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext context)
     {
+        Debug.Log( "Fire , " + context.phase + particleSystems.Count);
         if (context.started)
         {
-            Debug.Log("fire");
+            particleSystems.ForEach(particleSystem => {
+                particleSystem.Play();
+                //var emission = particleSystem.emission;
+                //emission.enabled = true;
+            });
+        } else if (context.canceled)
+        {
+            particleSystems.ForEach(particleSystem => {
+                particleSystem.Stop();
+                //var emission = particleSystem.emission;
+                //emission.enabled = false;
+                });
         }
     }
 

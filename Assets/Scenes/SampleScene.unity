@@ -855,6 +855,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 207531618099070696, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 207531618099070696, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 207531618099070696, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 214304990888520597, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 214304990888520597, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8031974
+      objectReference: {fileID: 0}
+    - target: {fileID: 214304990888520597, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6561350630426035441, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: field of view
       value: 90
