@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
     public float controlPitchFactor = -10.0f;
     public float controlRollFactor = -6.0f;
 
-    public List<ParticleSystem> particleSystems = null;
+    [Header("Add lasers here")]
+    public List<ParticleSystem> lasers = null;
 
     public float HorizontalOffset { get => horizontalOffset; set => horizontalOffset = value; }
 
@@ -85,12 +86,12 @@ public class Player : MonoBehaviour
     {
         if (context.started)
         {
-            particleSystems.ForEach(particleSystem => {
+            lasers.ForEach(particleSystem => {
                 particleSystem.Play();
             });
         } else if (context.canceled)
         {
-            particleSystems.ForEach(particleSystem => {
+            lasers.ForEach(particleSystem => {
                 particleSystem.Stop();
                 });
         }
