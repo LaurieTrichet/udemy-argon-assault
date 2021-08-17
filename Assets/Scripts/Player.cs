@@ -6,21 +6,30 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
 
-    public float HorizontalOffset = 1.0f;
+    private float horizontalOffset = 1.0f;
+    [Tooltip("how fast the ship moves depending on player's inputs")]
     public float speed = 10.0f;
+    [Tooltip("how far the ship will move on the x axis")]
     public float xRange = 3.0f;
+    [Tooltip("how far the ship will move on the y axis")]
     public float yRange = 3.0f;
+
     private bool shouldMove;
-    Vector2 direction;
-    Vector3 localPos;
+    private Vector2 direction;
+    private Vector3 localPos;
     private Vector2 moveValue;
 
+    [Header("Ship movement based on horizontal and vertical positioning")]
     public float positionPitchFactor = -6.0f;
-    public float controlPitchFactor = -10.0f;
     public float positionYawFactor = -10.0f;
+
+    [Header("Ship movement based on user inputs")]
+    public float controlPitchFactor = -10.0f;
     public float controlRollFactor = -6.0f;
 
     public List<ParticleSystem> particleSystems = null;
+
+    public float HorizontalOffset { get => horizontalOffset; set => horizontalOffset = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +70,6 @@ public class Player : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveValue = context.ReadValue<Vector2>();
-        Debug.Log(moveValue + " , " + context.phase);
         if (context.performed)
         {
             shouldMove = true;
@@ -75,20 +83,15 @@ public class Player : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext context)
     {
-        Debug.Log( "Fire , " + context.phase + particleSystems.Count);
         if (context.started)
         {
             particleSystems.ForEach(particleSystem => {
                 particleSystem.Play();
-                //var emission = particleSystem.emission;
-                //emission.enabled = true;
             });
         } else if (context.canceled)
         {
             particleSystems.ForEach(particleSystem => {
                 particleSystem.Stop();
-                //var emission = particleSystem.emission;
-                //emission.enabled = false;
                 });
         }
     }
