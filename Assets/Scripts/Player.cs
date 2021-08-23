@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-
+    private const float DelayReloading = 1.0f;
     private float horizontalOffset = 1.0f;
     [Tooltip("how fast the ship moves depending on player's inputs")]
     public float speed = 10.0f;
@@ -32,13 +33,13 @@ public class Player : MonoBehaviour
 
     public float HorizontalOffset { get => horizontalOffset; set => horizontalOffset = value; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private PlayerInput playerInput = null;
 
+    private void Start()
+    {
+        playerInput = GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ProcessMovement();
@@ -101,5 +102,15 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
+
+
+        playerInput.enabled = false;
+        StartCoroutine(RestartScene());
+    }
+
+    IEnumerator RestartScene()
+    {
+        yield return new WaitForSecondsRealtime(DelayReloading);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

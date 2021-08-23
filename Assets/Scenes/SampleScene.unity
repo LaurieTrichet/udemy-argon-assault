@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 6d43cb100c0ff604ca04f4eea3f2f0de, type: 2}
   m_LightingSettings: {fileID: 862412064}
 --- !u!196 &4
 NavMeshSettings:
@@ -887,6 +887,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2980245264488503593, guid: c8f901b5ed32b5b4b84ac56c944545ae, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 5.007639e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245264488503593, guid: c8f901b5ed32b5b4b84ac56c944545ae, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245264488503593, guid: c8f901b5ed32b5b4b84ac56c944545ae, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 4.2290395e+13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245264488503593, guid: c8f901b5ed32b5b4b84ac56c944545ae, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.5904e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 2980245264488503594, guid: c8f901b5ed32b5b4b84ac56c944545ae, type: 3}
       propertyPath: m_Name
       value: Directional Light
@@ -1031,11 +1047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6561350630508166771, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 295.05
+      value: 295.06
       objectReference: {fileID: 0}
     - target: {fileID: 6561350630508166771, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30.67
+      value: 30.89
       objectReference: {fileID: 0}
     - target: {fileID: 6561350630508166771, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: m_LocalPosition.z
