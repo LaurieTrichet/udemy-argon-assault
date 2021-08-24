@@ -6,12 +6,7 @@ public class SelfDestruct : MonoBehaviour
 {
     void Start()
     {
-        StartCoroutine(DestroyCoroutine());
+        Destroy(gameObject, 2.0f);
     }
 
-    IEnumerator DestroyCoroutine()
-    {
-        yield return new WaitForSecondsRealtime(2.0f);
-        Destroy(gameObject);
-    }
 }
