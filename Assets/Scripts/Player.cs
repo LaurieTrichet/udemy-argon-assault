@@ -35,9 +35,14 @@ public class Player : MonoBehaviour
 
     private PlayerInput playerInput = null;
 
+    public ParticleSystem particleExplosion = null;
+    public GameObject model = null;
+    private BoxCollider boxCollider = null;
+
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -103,8 +108,11 @@ public class Player : MonoBehaviour
     {
         Debug.Log(other.gameObject.name);
 
-
-        playerInput.enabled = false;
+        var explosionInstance = Instantiate(particleExplosion, this.transform.position, this.transform.rotation);
+        explosionInstance.Play();
+        this.playerInput.enabled = false;
+        boxCollider.enabled = false;
+        model.SetActive(false);
         StartCoroutine(RestartScene());
     }
 
