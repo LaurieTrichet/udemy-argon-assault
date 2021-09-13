@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingTarget : MonoBehaviour
@@ -11,29 +9,29 @@ public class ShootingTarget : MonoBehaviour
 
     public ScoreModifier scoreModifier = null;
     private ScoreBoard scoreBoard = null;
+    private ParticleController[] particleControllers = null;
 
     public int health = 5;
 
     private void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        particleControllers = GetComponents<ParticleController>();
     }
-    //private void OnParticleCollision(GameObject other)
-    //{
-    //    Debug.Log("shot "+ other.name);
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("shot " + other.name);
 
-    //    //ProcessHit();
-    //}
+        ProcessHit();
+    }
 
-
-        private void ProcessHit()
+    private void ProcessHit()
     {
         if ( health-- > 0)
         {
             scoreBoard.UpdateScore(scoreModifier.ScorePoints);
             Debug.Log("damage");
             CreateImpactVFX();
-           
         }
         else
         {
@@ -45,8 +43,12 @@ public class ShootingTarget : MonoBehaviour
     private void RemoveFromGame()
     {
         CreateExplosionVFX();
+        foreach(var particleController in particleControllers)
+        {
+            particleController.RemoveObject(this);
+        }
 
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     private void CreateExplosionVFX()

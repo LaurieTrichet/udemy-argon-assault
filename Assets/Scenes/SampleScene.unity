@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &312981160 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1408053259741574931, guid: 8ec91efd95fed9b4c918af471a893603, type: 3}
-  m_PrefabInstance: {fileID: 1233209088}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &359777069 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5473717305228288970, guid: 819e6ae2a83aa7b4d96d75dd21ff3da4, type: 3}
@@ -530,18 +525,13 @@ PrefabInstance:
       objectReference: {fileID: 2108033088}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec91efd95fed9b4c918af471a893603, type: 3}
---- !u!4 &1266674834 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1408053259741574931, guid: 8ec91efd95fed9b4c918af471a893603, type: 3}
-  m_PrefabInstance: {fileID: 1594720547}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1449345811
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1294
+  m_Name: pb_Mesh-1296
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1358,21 +1348,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3854533203911147215, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
-      propertyPath: CollisionModule.enabled
+      propertyPath: TriggerModule.enter
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3854533203911147215, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
-      propertyPath: TriggerModule.primitives.Array.size
-      value: 2
+      propertyPath: TriggerModule.inside
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3854533203911147215, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
-      propertyPath: TriggerModule.primitives.Array.data[0]
-      value: 
-      objectReference: {fileID: 1266674834}
-    - target: {fileID: 3854533203911147215, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
-      propertyPath: TriggerModule.primitives.Array.data[1]
-      value: 
-      objectReference: {fileID: 312981160}
     - target: {fileID: 6561350630508166770, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: m_Name
       value: Player Rig
