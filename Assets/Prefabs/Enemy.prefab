@@ -129,5 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyExplosion: {fileID: 812315489149629849, guid: f2c6c626340136240a3b3ec118fe63ff, type: 3}
+  enemyImpact: {fileID: 812315489149629849, guid: 4d1f1a28e2e86bd4986c123e61d05fbd, type: 3}
   parent: {fileID: 0}
   scoreModifier: {fileID: 11400000, guid: 8bb5f09ffe443194e93bcfa1b87b1335, type: 2}
+  health: 5
