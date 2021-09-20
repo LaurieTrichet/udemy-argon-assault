@@ -9,14 +9,14 @@ public class ShootingTarget : MonoBehaviour
 
     public ScoreModifier scoreModifier = null;
     private ScoreBoard scoreBoard = null;
-    private ParticleController[] particleControllers = null;
+    private LaserParticleController[] particleControllers = null;
 
     public int health = 5;
 
     private void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
-        particleControllers = GetComponents<ParticleController>();
+        particleControllers = GetComponents<LaserParticleController>();
     }
     private void OnParticleCollision(GameObject other)
     {
@@ -45,7 +45,7 @@ public class ShootingTarget : MonoBehaviour
         CreateExplosionVFX();
         foreach(var particleController in particleControllers)
         {
-            particleController.RemoveObject(this);
+            particleController.StopWatchingForShootingTarget(this);
         }
 
         Destroy(gameObject);
