@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 71a5ce3949f2bd549883ca5bb1ffa984, type: 3}
       propertyPath: m_Name
-      value: Ship Model
+      value: Player Ship Model
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 71a5ce3949f2bd549883ca5bb1ffa984, type: 3}
       propertyPath: m_RootOrder
@@ -67,5 +67,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 71a5ce3949f2bd549883ca5bb1ffa984, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1fc5fa83866a38468e4cc8118a77951, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71a5ce3949f2bd549883ca5bb1ffa984, type: 3}

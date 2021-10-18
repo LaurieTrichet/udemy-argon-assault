@@ -1403,5 +1403,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.005355835
       objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[0].inSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].inSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[0].outSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].outSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195651178655978524, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
