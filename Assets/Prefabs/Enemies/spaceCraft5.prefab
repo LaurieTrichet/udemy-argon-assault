@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9166534865560827812}
   - component: {fileID: 9166534865559827812}
   - component: {fileID: 1004525340}
+  - component: {fileID: 5087549194594275184}
   m_Layer: 0
   m_Name: spaceCraft5
   m_TagString: Untagged
@@ -102,3 +103,16 @@ MonoBehaviour:
   parent: {fileID: 0}
   scoreModifier: {fileID: 11400000, guid: 8bb5f09ffe443194e93bcfa1b87b1335, type: 2}
   health: 5
+--- !u!65 &5087549194594275184
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166534865557892004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.824996, y: 4.6265044, z: 17.202908}
+  m_Center: {x: -2.1625009, y: 2.0367506, z: -3.7985463}

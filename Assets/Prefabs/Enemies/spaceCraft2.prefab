@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4762665802174243786}
   - component: {fileID: 4762665802173145354}
   - component: {fileID: 1132223803}
+  - component: {fileID: 6323143037506588582}
   m_Layer: 0
   m_Name: spaceCraft2
   m_TagString: Untagged
@@ -102,3 +103,16 @@ MonoBehaviour:
   parent: {fileID: 0}
   scoreModifier: {fileID: 11400000, guid: 8bb5f09ffe443194e93bcfa1b87b1335, type: 2}
   health: 5
+--- !u!65 &6323143037506588582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4762665802170957770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.414072, y: 4.685737, z: 19.75}
+  m_Center: {x: 0.0000009536743, y: 2.0071247, z: -2.5749998}

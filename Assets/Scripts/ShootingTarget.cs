@@ -17,6 +17,7 @@ public class ShootingTarget : MonoBehaviour
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
         particleControllers = GetComponents<LaserParticleController>();
+        parent = GameObject.FindWithTag("SpawnAtRuntime");
     }
     private void OnParticleCollision(GameObject other)
     {

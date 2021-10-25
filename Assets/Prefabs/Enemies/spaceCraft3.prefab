@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8685970393166955500}
   - component: {fileID: 8685970393168052524}
   - component: {fileID: 1767285243}
+  - component: {fileID: 5410040414243567183}
   m_Layer: 0
   m_Name: spaceCraft3
   m_TagString: Untagged
@@ -102,3 +103,16 @@ MonoBehaviour:
   parent: {fileID: 0}
   scoreModifier: {fileID: 11400000, guid: 8bb5f09ffe443194e93bcfa1b87b1335, type: 2}
   health: 5
+--- !u!65 &5410040414243567183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685970393169993708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.850004, y: 5.150011, z: 14.724998}
+  m_Center: {x: 0.000004053116, y: 1.8229365, z: -0.6375005}
