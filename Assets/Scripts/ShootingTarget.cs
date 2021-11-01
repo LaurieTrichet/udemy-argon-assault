@@ -30,13 +30,13 @@ public class ShootingTarget : MonoBehaviour
     {
         if ( health-- > 0)
         {
-            scoreBoard.UpdateScore(scoreModifier.ScorePoints);
             Debug.Log("damage");
             CreateImpactVFX();
         }
         else
         {
             Debug.Log("dead");
+            scoreBoard.UpdateScore(scoreModifier.ScorePoints);
             RemoveFromGame();
         }
     }
