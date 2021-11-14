@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15721fe99ae18ed489412bb2e8cf811e, type: 3}
   m_Name: Under Attack
   m_EditorClassIdentifier: 
-  dialog: Under Attack
+  dialog: We're under Attack
   vo: {fileID: 8300000, guid: edf06038342ce2b499396c9b120b286b, type: 3}

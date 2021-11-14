@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15721fe99ae18ed489412bb2e8cf811e, type: 3}
   m_Name: Hitting Shield Generators
   m_EditorClassIdentifier: 
-  dialog: Hitting Shield Generators
+  dialog: They are hitting our shield generators
   vo: {fileID: 8300000, guid: 98c4be36f2574734cb014b03b3272d66, type: 3}
