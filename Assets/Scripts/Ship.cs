@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Ship : MonoBehaviour
 {
     private const float DelayReloading = 1.0f;
     private float horizontalOffset = 1.0f;
@@ -31,9 +31,14 @@ public class Player : MonoBehaviour
     [Header("Add lasers here")]
     public List<ParticleSystem> lasers = null;
 
+    [Header("The object which the ship looks toward")]
+    public Transform reticle = null;
+
     public float HorizontalOffset { get => horizontalOffset; set => horizontalOffset = value; }
 
-    private PlayerInput playerInput = null;
+
+
+    public PlayerInput playerInput = null;
 
     public ParticleSystem particleExplosion = null;
     public GameObject model = null;
@@ -41,15 +46,15 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
         boxCollider = GetComponent<BoxCollider>();
     }
 
     void Update()
     {
         ProcessMovement();
-        ProcessRotation();
+        //ProcessRotation();
     }
+
 
     private void ProcessRotation()
     {
@@ -65,12 +70,29 @@ public class Player : MonoBehaviour
     {
         if (shouldMove)
         {
-            localPos = transform.localPosition;
-            direction = new Vector2(xRange, yRange) * moveValue;
-            var x = localPos.x + direction.x;
-            var y = localPos.y + direction.y;
-            direction = new Vector2(Mathf.Clamp(x, -xRange, xRange), Mathf.Clamp(y, -yRange, yRange));
-            transform.localPosition = Vector2.MoveTowards(transform.localPosition, direction, Time.deltaTime * speed);
+            //Debug.Log(moveValue);
+            //reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, moveValue, speed);
+            //reticle.transform = reticle.transform.position.move
+            // Determine which direction to rotate towards
+            //Vector3 targetDirection = reticle.position - transform.position;
+
+            //// The step size is equal to speed times frame time.
+            //float singleStep = speed * Time.deltaTime;
+
+            //// Rotate the forward vector towards the target direction by one step
+            //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+
+            //// Draw a ray pointing at our target in
+            //Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            //// Calculate a rotation a step closer to the target and applies rotation to this object
+            //transform.rotation = Quaternion.LookRotation(newDirection);
+
+            // The step size is equal to speed times frame time.
+            //var step = speed * Time.deltaTime;
+
+            //// Rotate our transform a step closer to the target's.
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, target.rotation, step);
         }
     }
 
