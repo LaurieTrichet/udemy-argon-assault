@@ -9,11 +9,8 @@ public class PlayerControls : MonoBehaviour
     private const float DelayReloading = 1.0f;
     private float horizontalOffset = 1.0f;
     [Tooltip("how fast the ship moves depending on player's inputs")]
-    public float speed = 10.0f;
-    [Tooltip("how far the ship will move on the x axis")]
-    public float xRange = 3.0f;
-    [Tooltip("how far the ship will move on the y axis")]
-    public float yRange = 3.0f;
+    public float speed = 10.0f;   
+    public float step = 10.0f;
 
     private bool shouldMove;
     private Vector2 direction;
@@ -24,10 +21,16 @@ public class PlayerControls : MonoBehaviour
 
     public PlayerInput playerInput = null;
     public Camera camera = null;
-
+    private Canvas canvasParent = null;
+    public RectTransform playableAreaRectTransform = null;
+    private float cursorOffsetWidth = 0;
+    private float cursorOffsetHeight = 0;
     private void Start()
     {
-
+        canvasParent = GetComponentInParent<Canvas>();
+        var rect = GetComponent<RectTransform>();
+        cursorOffsetWidth = rect.rect.width / 2;
+        cursorOffsetHeight = rect.rect.height / 2;
     }
 
     void Update()
@@ -42,24 +45,23 @@ public class PlayerControls : MonoBehaviour
 
             localPos = transform.localPosition;
 
-            direction = new Vector2(xRange, yRange) * moveValue;
+            direction = new Vector2(step, step) * moveValue * canvasParent.scaleFactor;
             var x = localPos.x + direction.x;
             var y = localPos.y + direction.y;
 
             direction = new Vector2(x, y);
 
-            var newPosition = Vector2.MoveTowards(transform.localPosition, direction, Time.deltaTime * speed);
+            var newPosition = Vector2.MoveTowards(localPos, direction, Time.deltaTime * speed);
 
-            newPosition = camera.ScreenToViewportPoint(newPosition);
-            Debug.Log(newPosition);
-            newPosition = new Vector2(Mathf.Clamp01(newPosition.x) , Mathf.Clamp01(newPosition.y) );
+            var minX = -playableAreaRectTransform.rect.width / 2 + cursorOffsetWidth;
+            var maxX = playableAreaRectTransform.rect.width / 2 - cursorOffsetWidth;
+            var minY = -playableAreaRectTransform.rect.height / 2 + cursorOffsetHeight;
+            var maxY = playableAreaRectTransform.rect.height / 2 - cursorOffsetHeight;
 
-            newPosition = camera.ViewportToScreenPoint(newPosition);
-            Debug.Log(newPosition);
+            newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+            newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 
-            localPos.x = newPosition.x;
-            localPos.y = newPosition.y;
-            transform.localPosition = localPos;
+            transform.localPosition = newPosition;
         }
     }
 
