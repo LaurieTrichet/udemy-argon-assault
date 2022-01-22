@@ -36,7 +36,7 @@ public class Ship : MonoBehaviour
 
     public float HorizontalOffset { get => horizontalOffset; set => horizontalOffset = value; }
 
-
+    public Camera camera = null;
 
     public PlayerInput playerInput = null;
 
@@ -73,13 +73,17 @@ public class Ship : MonoBehaviour
             //Debug.Log(moveValue);
             //reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, moveValue, speed);
             //reticle.transform = reticle.transform.position.move
-            // Determine which direction to rotate towards
-            //Vector3 targetDirection = reticle.position - transform.position;
+            //Determine which direction to rotate towards
+            Vector3 position = transform.localPosition;
+            float singleStep = speed * Time.deltaTime;
+            Vector3 targetDirection = position + new Vector3(moveValue.x, moveValue.y, 0) * singleStep;
 
-            //// The step size is equal to speed times frame time.
-            //float singleStep = speed * Time.deltaTime;
+            // The step size is equal to speed times frame time.
 
-            //// Rotate the forward vector towards the target direction by one step
+            transform.localPosition = new Vector3(targetDirection.x, targetDirection.y, 0);
+            ClampMovement();
+
+            // Rotate the forward vector towards the target direction by one step
             //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
 
             //// Draw a ray pointing at our target in
@@ -88,12 +92,21 @@ public class Ship : MonoBehaviour
             //// Calculate a rotation a step closer to the target and applies rotation to this object
             //transform.rotation = Quaternion.LookRotation(newDirection);
 
-            // The step size is equal to speed times frame time.
+            ////The step size is equal to speed times frame time.
             //var step = speed * Time.deltaTime;
 
             //// Rotate our transform a step closer to the target's.
             //transform.rotation = Quaternion.RotateTowards(transform.rotation, target.rotation, step);
         }
+    }
+
+    private void ClampMovement()
+    {
+        var worldToViewportPosition = this.camera.WorldToViewportPoint(transform.position);
+        worldToViewportPosition.x = Mathf.Clamp01(worldToViewportPosition.x);
+        worldToViewportPosition.y = Mathf.Clamp01(worldToViewportPosition.y);
+        transform.position = this.camera.ViewportToWorldPoint(worldToViewportPosition);
+        Debug.Log(transform.position);
     }
 
     public void OnMove(InputAction.CallbackContext context)
