@@ -222,18 +222,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1304921154}
-        m_TargetAssemblyTypeName: PlayerControls, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 73124fa4-9151-4ada-8ebe-44198a660b68
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -781,10 +769,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10000
   step: 10
-  playerInput: {fileID: 159772529}
+  ship: {fileID: 1324021500}
   camera: {fileID: 1633840792}
   playableAreaRectTransform: {fileID: 940969839}
-  lookTarget: {fileID: 0}
+  rayLength: 1000
 --- !u!114 &1324021500 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
@@ -921,8 +909,12 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: rayLength
+      value: 66.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: yawnSpeed
-      value: 90
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: playerInput
@@ -932,6 +924,10 @@ PrefabInstance:
       propertyPath: targetToFollow
       value: 
       objectReference: {fileID: 1304921151}
+    - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: directionVisualIndicator
+      value: 
+      objectReference: {fileID: 1661199901}
     - target: {fileID: 5926526868708641975, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1
@@ -1200,6 +1196,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1661199901 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5926526868708641975, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+  m_PrefabInstance: {fileID: 1633840786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909949446
 GameObject:
   m_ObjectHideFlags: 0

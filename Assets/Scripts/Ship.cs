@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,30 +10,21 @@ public class Ship : MonoBehaviour
     private const float DelayReloading = 1.0f;
     private float horizontalOffset = 1.0f;
     [Tooltip("how fast the ship moves depending on player's inputs")]
-    public float speed = 10.0f;
-    [Tooltip("how far the ship will move on the x axis")]
-    public float xRange = 3.0f;
-    [Tooltip("how far the ship will move on the y axis")]
-    public float yRange = 3.0f;
-
-    private bool shouldMove;
-    private Vector2 direction;
-    private Vector3 localPos;
-    private Vector2 moveValue;
-
-    [Header("Ship movement based on horizontal and vertical positioning")]
-    public float positionPitchFactor = -6.0f;
-    public float positionYawFactor = -10.0f;
+    public float speed = 10.0f;     
+    [Tooltip("how fast the ship rotates depending on player's inputs")]
+    public float yawnSpeed = 10.0f;    
 
     [Header("Ship movement based on user inputs")]
-    public float controlPitchFactor = -10.0f;
+
     public float controlRollFactor = -6.0f;
 
     [Header("Add lasers here")]
     public List<ParticleSystem> lasers = null;
 
     [Header("The object which the ship looks toward")]
-    public Transform reticle = null;
+    public Transform directionVisualIndicator = null;
+
+    public float rayLength = 10f;
 
     public float HorizontalOffset { get => horizontalOffset; set => horizontalOffset = value; }
 
@@ -44,6 +36,9 @@ public class Ship : MonoBehaviour
     public GameObject model = null;
     private BoxCollider boxCollider = null;
 
+    private bool shouldMove;
+    private Vector2 moveValue;
+
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
@@ -52,51 +47,44 @@ public class Ship : MonoBehaviour
     void Update()
     {
         ProcessMovement();
-        //ProcessRotation();
+        ProcessRotation();
+
     }
 
+    void OnDrawGizmos()
+    {
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * rayLength;
+        //Gizmos.DrawRay(new Ray(transform.position, direction));
+
+        var a = transform.position;
+        var b = a + direction;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(a, direction);
+        Gizmos.color = Color.red;
+        //Gizmos.DrawLine(a, b);
+    }
 
     private void ProcessRotation()
     {
-        float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
-        float pitchDueToControl = moveValue.y * controlPitchFactor;
-        float pitch = pitchDueToPosition + pitchDueToControl;
-        float yaw = transform.localPosition.x * positionYawFactor;
+        directionVisualIndicator.localPosition = new Vector3(moveValue.x, moveValue.y, directionVisualIndicator.localPosition.z) ;
+        var lookRotation = Quaternion.LookRotation(directionVisualIndicator.localPosition);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, yawnSpeed * Time.deltaTime);
         float roll = controlRollFactor * moveValue.x;
-        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+        var localRotation = transform.localRotation.eulerAngles;
+        float rollLerped = Mathf.LerpAngle(localRotation.z, roll, speed * Time.deltaTime);
+        transform.localRotation = Quaternion.Euler(localRotation.x, localRotation.y, rollLerped);
     }
 
     private void ProcessMovement()
     {
         if (shouldMove)
         {
-            //Debug.Log(moveValue);
-            //reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, moveValue, speed);
-            //reticle.transform = reticle.transform.position.move
-            //Determine which direction to rotate towards
             Vector3 position = transform.localPosition;
             float singleStep = speed * Time.deltaTime;
             Vector3 targetDirection = position + new Vector3(moveValue.x, moveValue.y, 0) * singleStep;
+            transform.localPosition = new Vector3(targetDirection.x, targetDirection.y, position.z);
 
-            // The step size is equal to speed times frame time.
-
-            transform.localPosition = new Vector3(targetDirection.x, targetDirection.y, 0);
             ClampMovement();
-
-            // Rotate the forward vector towards the target direction by one step
-            //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-
-            //// Draw a ray pointing at our target in
-            //Debug.DrawRay(transform.position, newDirection, Color.red);
-
-            //// Calculate a rotation a step closer to the target and applies rotation to this object
-            //transform.rotation = Quaternion.LookRotation(newDirection);
-
-            ////The step size is equal to speed times frame time.
-            //var step = speed * Time.deltaTime;
-
-            //// Rotate our transform a step closer to the target's.
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, target.rotation, step);
         }
     }
 
@@ -106,7 +94,7 @@ public class Ship : MonoBehaviour
         worldToViewportPosition.x = Mathf.Clamp01(worldToViewportPosition.x);
         worldToViewportPosition.y = Mathf.Clamp01(worldToViewportPosition.y);
         transform.position = this.camera.ViewportToWorldPoint(worldToViewportPosition);
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
     }
 
     public void OnMove(InputAction.CallbackContext context)

@@ -13,18 +13,21 @@ public class PlayerControls : MonoBehaviour
     public float step = 10.0f;
 
     private bool shouldMove;
-    private Vector2 direction;
     private Vector3 localPos;
-    private Vector2 moveValue;
 
+    public Ship ship = null;
     public float HorizontalOffset { get => horizontalOffset; set => horizontalOffset = value; }
 
-    public PlayerInput playerInput = null;
     public Camera camera = null;
     private Canvas canvasParent = null;
     public RectTransform playableAreaRectTransform = null;
     private float cursorOffsetWidth = 0;
     private float cursorOffsetHeight = 0;
+
+
+
+    public float rayLength = 10f;
+
     private void Start()
     {
         canvasParent = GetComponentInParent<Canvas>();
@@ -38,44 +41,49 @@ public class PlayerControls : MonoBehaviour
         ProcessMovement();
     }
 
+
+
+    void OnDrawGizmos()
+    {
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * rayLength;
+        //Gizmos.DrawRay(new Ray(transform.position, direction));
+
+        var a = transform.position;
+        //Gizmos.color = Color.blue;
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(a, direction);
+        //Gizmos.DrawLine(a, b);
+    }
     private void ProcessMovement()
     {
-        if (shouldMove)
-        {
 
-            localPos = transform.localPosition;
+        var shipPosition = ship.transform.position;
+        Vector3 direction = ship.transform.TransformDirection(Vector3.forward) * rayLength;
+        direction = camera.WorldToScreenPoint(direction);
+        //var direction = camera.WorldToScreenPoint(shipPosition);
+        Debug.Log(direction);
+        //localPos = transform.localPosition;
 
-            direction = new Vector2(step, step) * moveValue * canvasParent.scaleFactor;
-            var x = localPos.x + direction.x;
-            var y = localPos.y + direction.y;
+        //direction = new Vector2(step, step) * shipPosition * canvasParent.scaleFactor;
+        //var x = localPos.x + direction.x;
+        //var y = localPos.y + direction.y;
 
-            direction = new Vector2(x, y);
+        //direction = new Vector2(x, y);
 
-            var newPosition = Vector2.MoveTowards(localPos, direction, Time.deltaTime * speed);
+        //var newPosition = Vector2.MoveTowards(localPos, direction, Time.deltaTime * speed);
+        var newPosition = direction;
 
-            var minX = -playableAreaRectTransform.rect.width / 2 + cursorOffsetWidth;
-            var maxX = playableAreaRectTransform.rect.width / 2 - cursorOffsetWidth;
-            var minY = -playableAreaRectTransform.rect.height / 2 + cursorOffsetHeight;
-            var maxY = playableAreaRectTransform.rect.height / 2 - cursorOffsetHeight;
+            //var minX = -playableAreaRectTransform.rect.width / 2 + cursorOffsetWidth;
+            //var maxX = playableAreaRectTransform.rect.width / 2 - cursorOffsetWidth;
+            //var minY = -playableAreaRectTransform.rect.height / 2 + cursorOffsetHeight;
+            //var maxY = playableAreaRectTransform.rect.height / 2 - cursorOffsetHeight;
 
-            newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-            newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
+            //newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+            //newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 
-            transform.localPosition = newPosition;
-        }
+            //transform.localPosition = newPosition;
+            transform.position = new Vector2(newPosition.x, newPosition.y);
+        
     }
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveValue = context.ReadValue<Vector2>();
-        if (context.performed)
-        {
-            shouldMove = true;
-
-        }
-        if (context.canceled)
-        {
-            shouldMove = false;
-        }
-    }
 }
