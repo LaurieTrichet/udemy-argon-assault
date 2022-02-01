@@ -679,6 +679,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940969838}
   m_CullTransparentMesh: 1
+--- !u!1 &1073580858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2262479825887569006, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+  m_PrefabInstance: {fileID: 1633840786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1304921150
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +777,7 @@ MonoBehaviour:
   ship: {fileID: 1324021500}
   camera: {fileID: 1633840792}
   playableAreaRectTransform: {fileID: 940969839}
+  aimTracker: {fileID: 1073580858}
   rayLength: 1000
 --- !u!114 &1324021500 stripped
 MonoBehaviour:
@@ -925,9 +931,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1304921151}
     - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: controlRollFactor
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: directionVisualIndicator
       value: 
       objectReference: {fileID: 1661199901}
+    - target: {fileID: 5835383759684885200, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835383759684885200, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835383759684885200, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.84
+      objectReference: {fileID: 0}
     - target: {fileID: 5926526868708641975, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1

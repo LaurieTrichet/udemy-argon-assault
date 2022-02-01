@@ -24,6 +24,8 @@ public class PlayerControls : MonoBehaviour
     private float cursorOffsetWidth = 0;
     private float cursorOffsetHeight = 0;
 
+    public GameObject aimTracker = null;
+
 
 
     public float rayLength = 10f;
@@ -57,10 +59,10 @@ public class PlayerControls : MonoBehaviour
     private void ProcessMovement()
     {
 
-        var shipPosition = ship.transform.position;
-        Vector3 direction = ship.transform.TransformDirection(Vector3.forward) * rayLength;
-        direction = camera.WorldToScreenPoint(direction);
-        //var direction = camera.WorldToScreenPoint(shipPosition);
+        var shipPosition = aimTracker.transform.position;
+        //Vector3 direction = ship.transform.TransformDirection(Vector3.forward) * rayLength;
+        //direction = camera.WorldToScreenPoint(direction);
+        var direction = camera.WorldToScreenPoint(shipPosition);
         Debug.Log(direction);
         //localPos = transform.localPosition;
 
