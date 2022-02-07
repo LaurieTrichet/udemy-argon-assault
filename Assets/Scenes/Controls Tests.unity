@@ -919,8 +919,12 @@ PrefabInstance:
       value: 66.08
       objectReference: {fileID: 0}
     - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
+      propertyPath: rollSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: yawnSpeed
-      value: 250
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5247190925769116415, guid: 57814e6841a82a141b75b5fa62fa36d4, type: 3}
       propertyPath: playerInput

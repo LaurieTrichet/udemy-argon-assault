@@ -10,13 +10,12 @@ public class Ship : MonoBehaviour
     private const float DelayReloading = 1.0f;
     private float horizontalOffset = 1.0f;
     [Tooltip("how fast the ship moves depending on player's inputs")]
-    public float speed = 10.0f;     
-    [Tooltip("how fast the ship rotates depending on player's inputs")]
-    public float yawnSpeed = 10.0f;    
+    public float speed = 10.0f;
 
     [Header("Ship movement based on user inputs")]
 
     public float controlRollFactor = -6.0f;
+    public float rollSpeed = 10;
 
     [Header("Add lasers here")]
     public List<ParticleSystem> lasers = null;
@@ -28,7 +27,7 @@ public class Ship : MonoBehaviour
 
     public float HorizontalOffset { get => horizontalOffset; set => horizontalOffset = value; }
 
-    public Camera camera = null;
+    public Camera followCamera = null;
 
     public PlayerInput playerInput = null;
 
@@ -38,6 +37,7 @@ public class Ship : MonoBehaviour
 
     private bool shouldMove;
     private Vector2 moveValue;
+
 
     private void Start()
     {
@@ -66,13 +66,16 @@ public class Ship : MonoBehaviour
 
     private void ProcessRotation()
     {
-        directionVisualIndicator.localPosition = new Vector3(moveValue.x, moveValue.y, directionVisualIndicator.localPosition.z) ;
+        directionVisualIndicator.localPosition = new Vector3(moveValue.x, moveValue.y, directionVisualIndicator.localPosition.z);
+
         var lookRotation = Quaternion.LookRotation(directionVisualIndicator.localPosition);
-        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, yawnSpeed * Time.deltaTime);
-        float roll = controlRollFactor * moveValue.x;
-        var localRotation = transform.localRotation.eulerAngles;
-        float rollLerped = Mathf.LerpAngle(localRotation.z, roll, speed * Time.deltaTime);
-        transform.localRotation = Quaternion.Euler(localRotation.x, localRotation.y, rollLerped);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, speed * Time.deltaTime);
+
+        float rollAngle = controlRollFactor * moveValue.x;
+        var localEulerRotation = transform.localEulerAngles;
+
+        float rollLerped = Mathf.LerpAngle(localEulerRotation.z, rollAngle, rollSpeed * Time.deltaTime);
+        transform.localRotation = Quaternion.Euler(localEulerRotation.x, localEulerRotation.y, rollLerped);
     }
 
     private void ProcessMovement()
@@ -90,10 +93,10 @@ public class Ship : MonoBehaviour
 
     private void ClampMovement()
     {
-        var worldToViewportPosition = this.camera.WorldToViewportPoint(transform.position);
+        var worldToViewportPosition = followCamera.WorldToViewportPoint(transform.position);
         worldToViewportPosition.x = Mathf.Clamp01(worldToViewportPosition.x);
         worldToViewportPosition.y = Mathf.Clamp01(worldToViewportPosition.y);
-        transform.position = this.camera.ViewportToWorldPoint(worldToViewportPosition);
+        transform.position = followCamera.ViewportToWorldPoint(worldToViewportPosition);
         //Debug.Log(transform.position);
     }
 
@@ -103,7 +106,6 @@ public class Ship : MonoBehaviour
         if (context.performed)
         {
             shouldMove = true;
-   
         }
         if (context.canceled)
         {
@@ -115,14 +117,17 @@ public class Ship : MonoBehaviour
     {
         if (context.started)
         {
-            lasers.ForEach(particleSystem => {
+            lasers.ForEach(particleSystem =>
+            {
                 particleSystem.Play();
             });
-        } else if (context.canceled)
+        }
+        else if (context.canceled)
         {
-            lasers.ForEach(particleSystem => {
+            lasers.ForEach(particleSystem =>
+            {
                 particleSystem.Stop();
-                });
+            });
         }
     }
 
