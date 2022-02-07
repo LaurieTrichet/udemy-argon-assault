@@ -5,12 +5,12 @@ using UnityEngine;
 public class CrossHair : MonoBehaviour
 {
 
-
+    public Vector3 position = Vector3.zero;
     public Camera followCamera = null;
     // Start is called before the first frame update
     void Start()
     {
-
+        position = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class CrossHair : MonoBehaviour
 
     private void ClampMovement()
     {
+        transform.localPosition = position;
         var worldToViewportPosition = followCamera.WorldToViewportPoint(transform.position);
 
         var shouldOverride = false;

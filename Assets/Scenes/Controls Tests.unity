@@ -643,6 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa9c802f6d177245bcd3708f43c842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
   followCamera: {fileID: 1633840792}
 --- !u!1 &1304921150
 GameObject:
@@ -1025,6 +1026,14 @@ PrefabInstance:
       propertyPath: followCamera
       value: 
       objectReference: {fileID: 1633840792}
+    - target: {fileID: 5567051268305652186, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+      propertyPath: rotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154333156904917493, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8030899338105883561, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
       propertyPath: m_Enabled
       value: 0

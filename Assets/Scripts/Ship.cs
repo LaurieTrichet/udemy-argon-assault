@@ -13,6 +13,7 @@ public class Ship : MonoBehaviour
     public float speed = 10.0f;
 
     [Header("Ship movement based on user inputs")]
+    public float rotationSpeed = 10;
 
     public float controlRollFactor = -6.0f;
     public float rollSpeed = 10;
@@ -66,11 +67,21 @@ public class Ship : MonoBehaviour
 
     private void ProcessRotation()
     {
+        YawPlane();
+        RollPlane();
+
+    }
+
+    private void YawPlane()
+    {
         directionVisualIndicator.localPosition = new Vector3(moveValue.x, moveValue.y, directionVisualIndicator.localPosition.z);
 
         var lookRotation = Quaternion.LookRotation(directionVisualIndicator.localPosition);
-        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, speed * Time.deltaTime);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, rotationSpeed * Time.deltaTime);
+    }
 
+    private void RollPlane()
+    {
         float rollAngle = controlRollFactor * moveValue.x;
         var localEulerRotation = transform.localEulerAngles;
 
