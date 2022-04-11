@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class Ship : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour
 {
     private const float DelayReloading = 1.0f;
     private float horizontalOffset = 1.0f;
@@ -39,71 +39,42 @@ public class Ship : MonoBehaviour
     private bool shouldMove;
     private Vector2 moveValue;
 
+    private Bounds shipBorder;
+    private Vector2 shipSize = Vector2.zero;
 
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
+        shipBorder = boxCollider.bounds;
+        shipSize.x = shipBorder.size.x;
+        shipSize.y = shipBorder.size.y;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        ProcessMovement();
-        ProcessRotation();
-
-    }
-
-    void OnDrawGizmos()
-    {
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * rayLength;
-        //Gizmos.DrawRay(new Ray(transform.position, direction));
-
-        var a = transform.position;
-        var b = a + direction;
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(a, direction);
-        Gizmos.color = Color.red;
-        //Gizmos.DrawLine(a, b);
-    }
-
-    private void ProcessRotation()
-    {
-        YawPlane();
-        RollPlane();
-
-    }
-
-    private void YawPlane()
-    {
-        directionVisualIndicator.localPosition = new Vector3(moveValue.x, moveValue.y, directionVisualIndicator.localPosition.z);
-
-        var lookRotation = Quaternion.LookRotation(directionVisualIndicator.localPosition);
-        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, rotationSpeed * Time.deltaTime);
-    }
-
-    private void RollPlane()
-    {
-        float rollAngle = controlRollFactor * moveValue.x;
-        var localEulerRotation = transform.localEulerAngles;
-
-        float rollLerped = Mathf.LerpAngle(localEulerRotation.z, rollAngle, rollSpeed * Time.deltaTime);
-        transform.localRotation = Quaternion.Euler(localEulerRotation.x, localEulerRotation.y, rollLerped);
-    }
-
-    private void ProcessMovement()
-    {
+        var deltaTime = Time.fixedDeltaTime;
         if (shouldMove)
         {
-            Vector3 position = transform.localPosition;
-            float singleStep = speed * Time.deltaTime;
-            Vector3 targetDirection = position + new Vector3(moveValue.x, moveValue.y, 0) * singleStep;
-            transform.localPosition = new Vector3(targetDirection.x, targetDirection.y, position.z);
-
-            ClampMovement();
+            ProcessMovement(deltaTime);
         }
+        ProcessRotation(deltaTime);
     }
+    private void ProcessMovement(float deltaTime)
+    {
+        Vector3 position = transform.localPosition;
+        float singleStep = speed * deltaTime;
+        Vector3 targetDirection = position + new Vector3(moveValue.x, moveValue.y, 0) * singleStep;
+        transform.localPosition = new Vector3(targetDirection.x, targetDirection.y, position.z);
 
+        ClampMovement();
+    }
     private void ClampMovement()
     {
+
+        //tempPosition.x = transform.position.x - shipSize.x;
+        //tempPosition.y = transform.position.y - shipSize.y;
+        //tempPosition = transform.position;
+        //var worldToViewportPosition = followCamera.WorldToViewportPoint(tempPosition);
         var worldToViewportPosition = followCamera.WorldToViewportPoint(transform.position);
         worldToViewportPosition.x = Mathf.Clamp01(worldToViewportPosition.x);
         worldToViewportPosition.y = Mathf.Clamp01(worldToViewportPosition.y);
@@ -111,7 +82,33 @@ public class Ship : MonoBehaviour
         //Debug.Log(transform.position);
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    private void ProcessRotation(float deltaTime)
+    {
+        YawPlane(deltaTime);
+        RollPlane(deltaTime);
+    }
+
+    private void YawPlane(float deltaTime)
+    {
+        directionVisualIndicator.localPosition = new Vector3(moveValue.x, moveValue.y, directionVisualIndicator.localPosition.z);
+
+        var lookRotation = Quaternion.LookRotation(directionVisualIndicator.localPosition);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, rotationSpeed * deltaTime);
+    }
+
+    private void RollPlane(float deltaTime)
+    {
+        float rollAngle = controlRollFactor * moveValue.x;
+        var localEulerRotation = transform.localEulerAngles;
+
+        float rollLerped = Mathf.LerpAngle(localEulerRotation.z, rollAngle, rollSpeed * deltaTime);
+        transform.localRotation = Quaternion.Euler(localEulerRotation.x, localEulerRotation.y, rollLerped);
+    }
+
+
+    private Vector2 tempPosition = Vector2.zero;
+
+    public void OnMove(InputAction.CallbackContext context) 
     {
         moveValue = context.ReadValue<Vector2>();
         if (context.performed)
