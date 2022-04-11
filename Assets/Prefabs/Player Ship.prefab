@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2867097514522923319}
-  - component: {fileID: 741515536813498661}
   - component: {fileID: 741515536813498651}
   - component: {fileID: 6203210051132781833}
   - component: {fileID: 7893468047848750782}
@@ -40,112 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &741515536813498661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2867097514523020567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d8df9f01a56876145a573e138ec1f640, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 741515536813498651}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 73124fa4-9151-4ada-8ebe-44198a660b68
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f4066853-650f-457b-9f04-9bdbce0a7d72
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 741515536813498651}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Fire
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: aa97e4cf-72a7-410d-bb0c-86290f00f6b6
-    m_ActionName: Player/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e40dceb3-5ab4-454b-8bb4-631197068f7b
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f267ec1d-d7f1-4590-a605-f113aa1c48ce
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4d5806ef-7962-4871-9064-0ab2d0bc7e1e
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 464848f2-a737-4ed5-ac14-b74ba27b2031
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: df717f7e-27dd-4452-874e-f7805400ffac
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 25fe37ee-cbe8-434a-823e-02c64c93d99a
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 23d1f192-272b-40fd-ad62-f727a272e2b7
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8047e80e-7c83-4a21-915e-64206711ed05
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ac49f1c9-dd0a-480f-a7ab-ebaba21ea92b
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cb1002cc-59dd-47f5-a8ca-a26f4a0cfd28
-    m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &741515536813498651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,15 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470dcfe570f44504eab8e83d9d8d95ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  yawnSpeed: 10
-  controlRollFactor: 24
+  speed: 25
+  rotationSpeed: 100
+  controlRollFactor: -80
+  rollSpeed: 5
   lasers:
   - {fileID: 4646286288123178252}
   - {fileID: 8639502422785316139}
-  directionVisualIndicator: {fileID: 0}
-  rayLength: 10
-  camera: {fileID: 0}
+  directionVisualIndicator: {fileID: 1199330663413802835}
+  rayLength: 66.08
+  followCamera: {fileID: 0}
   playerInput: {fileID: 0}
   particleExplosion: {fileID: 3686035183244525560}
   model: {fileID: 2729888078634422389}
@@ -181,8 +75,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -6.45, y: 1.81, z: 5.63}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5, y: 1.5, z: 5}
+  m_Center: {x: 0, y: 0.26, z: 0.83}
 --- !u!54 &7893468047848750782
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -212,7 +106,7 @@ GameObject:
   - component: {fileID: 6785468983327433270}
   - component: {fileID: 2916990843908006760}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: CrossHairTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,7 +120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6772940230126768010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.54}
+  m_LocalPosition: {x: 2.02, y: 0, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2867097514522923319}
@@ -247,7 +141,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6772940230126768010}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -290,7 +184,7 @@ SphereCollider:
   m_GameObject: {fileID: 6772940230126768010}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000004
   m_Center: {x: -0.0001220704, y: 1.1368684e-13, z: -0.00012207037}
@@ -514,6 +408,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2867097514522923319}
     m_Modifications:
+    - target: {fileID: 1549767233512921640, guid: 83bd8c639b28ef14d9163ebea2ff5d2b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076875966557767106, guid: 83bd8c639b28ef14d9163ebea2ff5d2b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5464589468235386546, guid: 83bd8c639b28ef14d9163ebea2ff5d2b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -528,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5464589468235386546, guid: 83bd8c639b28ef14d9163ebea2ff5d2b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5464589468235386546, guid: 83bd8c639b28ef14d9163ebea2ff5d2b, type: 3}
       propertyPath: m_LocalRotation.w

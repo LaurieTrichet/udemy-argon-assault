@@ -19,7 +19,7 @@ public class CrosshairController : MonoBehaviour
 
     private void Start()
     {    
-        aimTracker.transform.localPosition = aimTrackerPosition;
+        //aimTracker.transform.localPosition = aimTrackerPosition;
     }
 
     void FixedUpdate()
@@ -55,16 +55,14 @@ public class CrosshairController : MonoBehaviour
             shouldOverride = true;
         }
 
-        if (shouldOverride)
-        {
-            transform.position = targetCamera.ViewportToWorldPoint(worldToViewportPosition);
-        }
-
+      
+        aimTrackerPosition = targetCamera.ViewportToWorldPoint(worldToViewportPosition);
+       
     }
 
     private void ProcessMovement()
     {
-        direction = targetCamera.WorldToScreenPoint(aimTracker.transform.position);
+        direction = targetCamera.WorldToScreenPoint(aimTrackerPosition);
         //direction.x = Mathf.Floor(direction.x);
         //direction.y = Mathf.Floor(direction.y);
 
