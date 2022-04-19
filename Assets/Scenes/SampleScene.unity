@@ -1053,22 +1053,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 158466561}
-    - target: {fileID: 1233561325220289992, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
-      propertyPath: m_Size.x
-      value: -5.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233561325220289992, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
-      propertyPath: m_Size.y
-      value: 1.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233561325220289992, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233561325220289992, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
-      propertyPath: m_Center.y
-      value: 0.28
-      objectReference: {fileID: 0}
     - target: {fileID: 5567051268305652186, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
       propertyPath: playerInput
       value: 

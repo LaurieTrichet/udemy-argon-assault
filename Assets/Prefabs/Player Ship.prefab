@@ -52,7 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  rotationSpeed: 100
+  controlPitchFactor: 10
+  controlYawFactor: 10
+  yawSpeed: 100
   controlRollFactor: -80
   rollSpeed: 5
   lasers:
@@ -430,7 +432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5464589468235386546, guid: 83bd8c639b28ef14d9163ebea2ff5d2b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5464589468235386546, guid: 83bd8c639b28ef14d9163ebea2ff5d2b, type: 3}
       propertyPath: m_LocalRotation.w

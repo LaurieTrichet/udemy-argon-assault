@@ -13,7 +13,9 @@ public class PlayerMovementController : MonoBehaviour
     public float speed = 10.0f;
 
     [Header("Ship movement based on user inputs")]
-    public float rotationSpeed = 10;
+    public float controlPitchFactor = 10.0f;
+    public float controlYawFactor = 10.0f;
+    public float yawSpeed = 10;
 
     public float controlRollFactor = -6.0f;
     public float rollSpeed = 10;
@@ -42,6 +44,7 @@ public class PlayerMovementController : MonoBehaviour
     private Bounds shipBorder;
     private Vector2 shipSize = Vector2.zero;
 
+    private Vector3 shipPosition = Vector3.zero;
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
@@ -75,25 +78,25 @@ public class PlayerMovementController : MonoBehaviour
         //tempPosition.y = transform.position.y - shipSize.y;
         //tempPosition = transform.position;
         //var worldToViewportPosition = followCamera.WorldToViewportPoint(tempPosition);
-        var worldToViewportPosition = followCamera.WorldToViewportPoint(transform.position);
-        worldToViewportPosition.x = Mathf.Clamp01(worldToViewportPosition.x);
-        worldToViewportPosition.y = Mathf.Clamp01(worldToViewportPosition.y);
-        transform.position = followCamera.ViewportToWorldPoint(worldToViewportPosition);
+        shipPosition = followCamera.WorldToViewportPoint(transform.position);
+        shipPosition.x = Mathf.Clamp01(shipPosition.x);
+        shipPosition.y = Mathf.Clamp01(shipPosition.y);
+        transform.position = followCamera.ViewportToWorldPoint(shipPosition);
         //Debug.Log(transform.position);
     }
 
     private void ProcessRotation(float deltaTime)
     {
-        YawPlane(deltaTime);
+        YawAndPitchPlance(deltaTime);
         RollPlane(deltaTime);
     }
-
-    private void YawPlane(float deltaTime)
+    
+    private void YawAndPitchPlance(float deltaTime)
     {
-        directionVisualIndicator.localPosition = new Vector3(moveValue.x, moveValue.y, directionVisualIndicator.localPosition.z);
+        directionVisualIndicator.localPosition = new Vector3(moveValue.x* controlYawFactor, moveValue.y * controlPitchFactor, directionVisualIndicator.localPosition.z);
 
         var lookRotation = Quaternion.LookRotation(directionVisualIndicator.localPosition);
-        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, rotationSpeed * deltaTime);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, lookRotation, yawSpeed * deltaTime);
     }
 
     private void RollPlane(float deltaTime)

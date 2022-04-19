@@ -17,11 +17,6 @@ public class CrosshairController : MonoBehaviour
 
     private Vector2 direction = Vector2.zero;
 
-    private void Start()
-    {    
-        //aimTracker.transform.localPosition = aimTrackerPosition;
-    }
-
     void FixedUpdate()
     {
         ClampMovement();
@@ -30,45 +25,16 @@ public class CrosshairController : MonoBehaviour
 
     private void ClampMovement()
     {
-        var worldToViewportPosition = targetCamera.WorldToViewportPoint(aimTracker.transform.position);
-
-        var shouldOverride = false;
-        if (worldToViewportPosition.x < 0)
-        {
-            worldToViewportPosition.x = 0;
-            shouldOverride = true;
-        }
-        else if (worldToViewportPosition.x > 1)
-        {
-            worldToViewportPosition.x = 1;
-            shouldOverride = true;
-        }
-
-        if (worldToViewportPosition.y < 0)
-        {
-            worldToViewportPosition.y = 0;
-            shouldOverride = true;
-        }
-        else if (worldToViewportPosition.y > 1)
-        {
-            worldToViewportPosition.y = 1;
-            shouldOverride = true;
-        }
-
-      
-        aimTrackerPosition = targetCamera.ViewportToWorldPoint(worldToViewportPosition);
-       
+        aimTrackerPosition = targetCamera.WorldToViewportPoint(aimTracker.transform.position);
+        aimTrackerPosition.x = Mathf.Clamp01(aimTrackerPosition.x);
+        aimTrackerPosition.y = Mathf.Clamp01(aimTrackerPosition.y);
+        aimTrackerPosition = targetCamera.ViewportToWorldPoint(aimTrackerPosition);
     }
 
     private void ProcessMovement()
     {
         direction = targetCamera.WorldToScreenPoint(aimTrackerPosition);
-        //direction.x = Mathf.Floor(direction.x);
-        //direction.y = Mathf.Floor(direction.y);
-
         transform.position = direction;
     }
-
-
 
 }
