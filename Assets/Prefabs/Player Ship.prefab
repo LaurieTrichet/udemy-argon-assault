@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  controlPitchFactor: 10
-  controlYawFactor: 10
+  controlPitchFactor: 8
+  controlYawFactor: 16
   yawSpeed: 100
   controlRollFactor: -80
   rollSpeed: 5

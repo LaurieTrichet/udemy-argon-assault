@@ -606,14 +606,6 @@ PrefabInstance:
       propertyPath: followCamera
       value: 
       objectReference: {fileID: 1871730501}
-    - target: {fileID: 5567051268305652186, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
-      propertyPath: controlYawFactor
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567051268305652186, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
-      propertyPath: controlPitchFactor
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1073580863, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
