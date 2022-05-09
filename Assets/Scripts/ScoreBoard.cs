@@ -10,11 +10,19 @@ public class ScoreBoard : MonoBehaviour
 
     public int Score { get => score; set => score = value; }
 
+    IntGameEventListener scoreModifierListener = null;
+
+    private void Awake()
+    {
+        scoreModifierListener = GetComponent<IntGameEventListener>();
+    }
+
     private void Start()
     {
+        scoreModifierListener.Action = UpdateScore;
         UpdateUI();
-        
     }
+
     public void UpdateScore(int points)
     {
         score += points;
