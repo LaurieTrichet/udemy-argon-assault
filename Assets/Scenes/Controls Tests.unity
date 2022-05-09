@@ -379,6 +379,11 @@ PrefabInstance:
       objectReference: {fileID: 1699038225}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec91efd95fed9b4c918af471a893603, type: 3}
+--- !u!1 &1631251670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8354123079044771348, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+  m_PrefabInstance: {fileID: 401919856783551927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1658599184
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,10 +628,18 @@ PrefabInstance:
       propertyPath: followCamera
       value: 
       objectReference: {fileID: 1871730501}
+    - target: {fileID: 34496591991618171, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 401919854876420528, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
       propertyPath: m_Path
       value: 
       objectReference: {fileID: 456878274}
+    - target: {fileID: 401919854876420528, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+      propertyPath: m_Speed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 401919854876420529, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
       propertyPath: m_Name
       value: DollyCart1
@@ -675,6 +688,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1811172484593289975, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811172484593289975, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b53036376da4b554e92d543777d57557, type: 2}
+    - target: {fileID: 3381001830564947263, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5567051268305652186, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
       propertyPath: playerInput
       value: 
@@ -683,6 +708,10 @@ PrefabInstance:
       propertyPath: followCamera
       value: 
       objectReference: {fileID: 1871730501}
+    - target: {fileID: 8030899338105883561, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1073580863, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c94bae6798b5aa4db929117217cb95f, type: 3}
@@ -693,6 +722,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1676499296214500706, guid: 34ded1025c54a1e4b9ec4869c6ed7375, type: 3}
+      propertyPath: ship
+      value: 
+      objectReference: {fileID: 1324021500}
+    - target: {fileID: 1676499296214500706, guid: 34ded1025c54a1e4b9ec4869c6ed7375, type: 3}
+      propertyPath: aimTracker
+      value: 
+      objectReference: {fileID: 1631251670}
+    - target: {fileID: 1676499296214500706, guid: 34ded1025c54a1e4b9ec4869c6ed7375, type: 3}
+      propertyPath: targetCamera
+      value: 
+      objectReference: {fileID: 1871730501}
     - target: {fileID: 2755806871819088185, guid: 34ded1025c54a1e4b9ec4869c6ed7375, type: 3}
       propertyPath: ship
       value: 
@@ -709,6 +750,18 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1871730501}
+    - target: {fileID: 2755806871819088196, guid: 34ded1025c54a1e4b9ec4869c6ed7375, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755806871819088196, guid: 34ded1025c54a1e4b9ec4869c6ed7375, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755806871819088197, guid: 34ded1025c54a1e4b9ec4869c6ed7375, type: 3}
+      propertyPath: m_Name
+      value: Crosshair
+      objectReference: {fileID: 0}
     - target: {fileID: 2755806872298668312, guid: 34ded1025c54a1e4b9ec4869c6ed7375, type: 3}
       propertyPath: m_Name
       value: Canvas crosshair
