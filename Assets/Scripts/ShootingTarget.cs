@@ -1,24 +1,36 @@
+using System;
 using UnityEngine;
 
 public class ShootingTarget : MonoBehaviour
 {
-
+    private const string Tag = "SpawnAtRuntime";
     public GameObject enemyExplosion = null;
     public GameObject enemyImpact = null;
     public GameObject parent = null;
 
     public ScoreModifier scoreModifier = null;
-    private ScoreBoard scoreBoard = null;
+
     private LaserParticleController[] particleControllers = null;
+
+    public IntGameEvent onDeathEvent = null;
 
     public int health = 5;
 
     private void Start()
     {
-        scoreBoard = FindObjectOfType<ScoreBoard>();
         particleControllers = GetComponents<LaserParticleController>();
-        parent = GameObject.FindWithTag("SpawnAtRuntime");
+        var spawnAtRuntime = GameObject.FindWithTag(Tag);
+        parent = spawnAtRuntime ?? CreateSpawnAtRuntime();
     }
+
+
+    private GameObject CreateSpawnAtRuntime()
+    {
+        var parent = new GameObject(Tag);
+        parent.tag = Tag;
+        return parent;
+    }
+
     private void OnParticleCollision(GameObject other)
     {
         Debug.Log("shot " + other.name);
@@ -36,7 +48,8 @@ public class ShootingTarget : MonoBehaviour
         else
         {
             Debug.Log("dead");
-            scoreBoard.UpdateScore(scoreModifier.ScorePoints);
+            onDeathEvent?.Trigger(scoreModifier.ScorePoints);
+            
             RemoveFromGame();
         }
     }
