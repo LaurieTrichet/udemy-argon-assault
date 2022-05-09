@@ -102,6 +102,7 @@ MonoBehaviour:
   enemyImpact: {fileID: 4407862059572587795, guid: 4d1f1a28e2e86bd4986c123e61d05fbd, type: 3}
   parent: {fileID: 0}
   scoreModifier: {fileID: 11400000, guid: 8bb5f09ffe443194e93bcfa1b87b1335, type: 2}
+  onDeathEvent: {fileID: 11400000, guid: d3d72809e68a9f340bd6f5549d0440be, type: 2}
   health: 5
 --- !u!65 &5721281367831292983
 BoxCollider:
